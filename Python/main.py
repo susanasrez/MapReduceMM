@@ -1,16 +1,20 @@
-# This is a sample Python script.
+from denseMatrix.randomMatrix import RandomMatrixGenerator
+from operands.matrixMultiply import MatrixMultiplyMR
 
-# Press Mayús+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    N = 4
+    density = 0.6
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    generator = RandomMatrixGenerator(N, density)
+    matrix_A = generator.generate_matrix()
+    matrix_B = generator.generate_matrix()
+
+    job = MatrixMultiplyMR(args=['--matrixA', 'matrixA.txt', '--matrixB', 'matrixB.txt'])
+
+    with open('matrixA.txt', 'w') as file_A, open('matrixB.txt', 'w') as file_B:
+        for row in matrix_A:
+            file_A.write(','.join(map(str, row)) + '\n')
+        for row in matrix_B:
+            file_B.write(','.join(map(str, row)) + '\n')
+
+    job.run()
