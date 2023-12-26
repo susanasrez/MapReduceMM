@@ -1,20 +1,30 @@
-from denseMatrix.randomMatrix import RandomMatrixGenerator
-from operands.matrixMultiply import MatrixMultiplyMR
+import subprocess
+from generator.densematrixgenerator import RandomDenseMatrix
+from generator.coordinate_matrix_generator import CoordinateMatrixGenerator
+from writer.writeMatrix import MatrixWriter
+import os
+from operations.original.matrixmultiplier import MatrixMultiply
+from writer.writeOriginal import WriteOriginal
 
-if __name__ == '__main__':
-    N = 4
-    density = 0.6
+def obtain_route():
+    route = os.path.abspath(os.getcwd()).split('\\')
+    route.pop()
+    route = '/'.join(route)
+    route = route + '/results/matrix.txt'
+    return route
 
-    generator = RandomMatrixGenerator(N, density)
-    matrix_A = generator.generate_matrix()
-    matrix_B = generator.generate_matrix()
 
-    job = MatrixMultiplyMR(args=['--matrixA', 'matrixA.txt', '--matrixB', 'matrixB.txt'])
+N = 2
+density = 0.5
+matrixA = CoordinateMatrixGenerator(N, density).matrix
+matrixB = CoordinateMatrixGenerator(N, density).matrix
+matrixC = MatrixMultiply.multiplyCOO(matrixA, matrixB)
+matrixC.display_matrix()
 
-    with open('matrixA.txt', 'w') as file_A, open('matrixB.txt', 'w') as file_B:
-        for row in matrix_A:
-            file_A.write(','.join(map(str, row)) + '\n')
-        for row in matrix_B:
-            file_B.write(','.join(map(str, row)) + '\n')
+#route = obtain_route()
+#MatrixWriter(matrixA, matrixB, './results/matrix.txt').write_to_file_COO()
 
-    job.run()
+#file = './results/matrix.txt'
+#subprocess.call(['python', './operations/mapReduce/matrixmultiplication.py', file])
+
+
