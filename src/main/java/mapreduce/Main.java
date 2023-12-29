@@ -13,7 +13,7 @@ public class Main {
         Matrix matrix = builder.get();
         matrix.display();
 
-        String filePath = "./src/main/resources//matrices.txt";
+        String filePath = "./src/main/resources/matrices.txt";
         Writer.writeMatrixToFile(matrix, matrix, filePath);
     }
 }
