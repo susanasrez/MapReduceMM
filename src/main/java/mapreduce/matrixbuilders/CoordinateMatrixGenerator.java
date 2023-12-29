@@ -29,7 +29,7 @@ public class CoordinateMatrixGenerator implements MatrixBuilder {
                 isUnique = !containsCoordinate(coordinates, row, col);
             }
 
-            double value = random.nextDouble();
+            int value = random.nextInt(101);
             coordinates.add(new Coordinate(row, col, value));
         }
 
@@ -46,7 +46,8 @@ public class CoordinateMatrixGenerator implements MatrixBuilder {
     }
 
     @Override
-    public void set(int i, int j, double value) {
+    public void set(int i, int j, int value) {
+
     }
 
     @Override

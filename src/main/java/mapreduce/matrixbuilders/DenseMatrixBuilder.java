@@ -7,15 +7,15 @@ import mapreduce.matrix.DenseMatrix;
 
 public class DenseMatrixBuilder implements MatrixBuilder {
     private final int size;
-    private final double[][] values;
+    private final int[][] values;
 
     public DenseMatrixBuilder(int size) {
         this.size = size;
-        this.values = new double[size][size];
+        this.values = new int[size][size];
     }
 
     @Override
-    public void set(int i, int j, double value) {
+    public void set(int i, int j, int value) {
         values[i][j] = value;
     }
 
@@ -24,7 +24,7 @@ public class DenseMatrixBuilder implements MatrixBuilder {
         CoordinateMatrix coordMatrix = (CoordinateMatrix) coordinateMatrix;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                double value = coordMatrix.get(i, j);
+                int value = coordMatrix.get(i, j);
                 set(i, j, value);
             }
         }

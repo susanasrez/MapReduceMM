@@ -1,5 +1,6 @@
 package mapreduce;
 public interface Matrix {
     int size();
-    double get(int i, int j);
+    int get(int i, int j);
+    void display();
 }

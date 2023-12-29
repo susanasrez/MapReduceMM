@@ -1,7 +1,7 @@
 package mapreduce;
 
 public interface MatrixBuilder {
-    void set(int i, int j, double value);
+    void set(int i, int j, int value);
 
     void setMatrix(Matrix c);
 
