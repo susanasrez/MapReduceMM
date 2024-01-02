@@ -6,33 +6,33 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-class Element implements Writable {
-    int tag;
+class Component implements Writable {
+    int target;
     int index;
-    int value;
+    double value;
 
-    Element() {
-        tag = 0;
+    Component() {
+        target = 0;
         index = 0;
-        value = 0;
+        value = 0.0;
     }
 
-    Element(int tag, int index, int value) {
-        this.tag = tag;
+    Component(int tag, int index, double value) {
+        this.target = tag;
         this.index = index;
         this.value = value;
     }
 
     @Override
     public void readFields(DataInput input) throws IOException {
-        tag = input.readInt();
+        target = input.readInt();
         index = input.readInt();
-        value = input.readInt();
+        value = input.readDouble();
     }
 
     @Override
     public void write(DataOutput output) throws IOException {
-        output.writeInt(tag);
+        output.writeInt(target);
         output.writeInt(index);
         output.writeDouble(value);
     }

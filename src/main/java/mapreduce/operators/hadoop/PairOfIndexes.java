@@ -6,16 +6,17 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-class Pair implements WritableComparable<Pair> {
+class PairOfIndexes implements WritableComparable<PairOfIndexes> {
+
     int row;
     int col;
 
-    Pair() {
+    PairOfIndexes() {
         row = 0;
         col = 0;
     }
 
-    Pair(int row, int col) {
+    PairOfIndexes(int row, int col) {
         this.row = row;
         this.col = col;
     }
@@ -33,13 +34,14 @@ class Pair implements WritableComparable<Pair> {
     }
 
     @Override
-    public int compareTo(Pair compare) {
+    public int compareTo(PairOfIndexes compare) {
+
         if (row > compare.row) {
             return 1;
-        } else if (row < compare.row) {
+        } else if ( row < compare.row) {
             return -1;
         } else {
-            if (col > compare.col) {
+            if(col > compare.col) {
                 return 1;
             } else if (col < compare.col) {
                 return -1;
@@ -51,5 +53,5 @@ class Pair implements WritableComparable<Pair> {
     public String toString() {
         return row + " " + col + " ";
     }
-}
 
+}
