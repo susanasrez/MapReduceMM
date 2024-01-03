@@ -5,6 +5,9 @@ import matrixmultiplication.matrix.DenseMatrix;
 import matrixmultiplication.operators.MatrixMultiplication;
 import matrixmultiplication.operators.densematrixmultiplication.DenseMatrixMultiplication;
 
+import java.io.*;
+import java.util.Scanner;
+
 public class Checker {
 
     public static boolean testDense(Matrix a, Matrix b, Matrix c) {
@@ -28,5 +31,34 @@ public class Checker {
             }
         }
         return true;
+    }
+
+    public static boolean testHadoop(Matrix matrix, String resultPath) throws IOException {
+        int n = matrix.size();
+        Matrix result = readResult(resultPath, n);
+        return testDense(matrix, matrix, result);
+    }
+
+    public static Matrix readResult(String path, int n) throws FileNotFoundException {
+        File file = new File(path);
+        Scanner scanner = new Scanner(file);
+
+        int rows = n;
+        int columns = n;
+        int[][] values = new int[rows][columns];
+
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            String[] parts = line.split("\\s+");
+            int i = Integer.parseInt(parts[0]);
+            int j = Integer.parseInt(parts[1]);
+            int value = Integer.parseInt(parts[2]);
+
+            values[i][j] = value;
+        }
+
+        scanner.close();
+
+        return new DenseMatrix(values);
     }
 }

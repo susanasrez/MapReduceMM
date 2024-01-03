@@ -117,15 +117,15 @@ public class Multiply {
         }
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void setUp(String matrixA, String matrixB, String temp, String result) throws Exception {
 
         Configuration conf1 = new Configuration();
         Job job1 = Job.getInstance(conf1, "MapIntermediate");
 
         job1.setJarByClass(Multiply.class);
 
-        MultipleInputs.addInputPath(job1, new Path(args[0]), TextInputFormat.class, MatrixAMapper.class);
-        MultipleInputs.addInputPath(job1, new Path(args[1]), TextInputFormat.class, MatrixBMapper.class);
+        MultipleInputs.addInputPath(job1, new Path(matrixA), TextInputFormat.class, MatrixAMapper.class);
+        MultipleInputs.addInputPath(job1, new Path(matrixB), TextInputFormat.class, MatrixBMapper.class);
 
         job1.setReducerClass(ReducerMatrix.class);
 
@@ -137,7 +137,7 @@ public class Multiply {
 
         job1.setOutputFormatClass(TextOutputFormat.class);
 
-        FileOutputFormat.setOutputPath(job1, new Path(args[2]));
+        FileOutputFormat.setOutputPath(job1, new Path(temp));
 
         if (!job1.waitForCompletion(true)) {
             System.exit(1);
@@ -160,8 +160,8 @@ public class Multiply {
         job2.setInputFormatClass(TextInputFormat.class);
         job2.setOutputFormatClass(TextOutputFormat.class);
 
-        FileInputFormat.setInputPaths(job2, new Path(args[2]));
-        FileOutputFormat.setOutputPath(job2, new Path(args[3]));
+        FileInputFormat.setInputPaths(job2, new Path(temp));
+        FileOutputFormat.setOutputPath(job2, new Path(result));
 
         System.exit(job2.waitForCompletion(true) ? 0 : 1);
     }
