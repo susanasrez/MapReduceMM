@@ -17,3 +17,4 @@ transform = MatrixTransformations()
 matrix1 = transform.transform(matrix)
 
 c = DenseMatrixMultiplication().multiply(matrix1, matrix1)
+

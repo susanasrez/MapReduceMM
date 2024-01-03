@@ -22,3 +22,4 @@ class Checker:
                 if abs(a.values[i][j] - b.values[i][j]) > epsilon:
                     return False
         return True
+    

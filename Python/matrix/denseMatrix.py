@@ -14,4 +14,17 @@ class DenseMatrix():
         print("Values: ")
         for i in range(self.size):
             print(self.values[i])
+
+    @staticmethod
+    def read_from_file(filePath):
+        try:
+            with open(filePath, 'r') as file:
+                lines = file.readlines()
+                values = []
+                for line in lines:
+                    row = [int(x) for x in line.strip().split()]
+                    values.append(row)
+                return DenseMatrix(values)
+        except FileNotFoundError:
+            raise Exception("File not found: " + filePath)
         
