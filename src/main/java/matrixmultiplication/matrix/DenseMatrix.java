@@ -1,5 +1,5 @@
-package mapreduce.matrix;
-import mapreduce.Matrix;
+package matrixmultiplication.matrix;
+import matrixmultiplication.Matrix;
 
 public class DenseMatrix implements Matrix {
     private final int[][] values;

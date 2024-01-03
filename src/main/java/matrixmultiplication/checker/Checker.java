@@ -1,9 +1,9 @@
-package mapreduce.checker;
+package matrixmultiplication.checker;
 
-import mapreduce.Matrix;
-import mapreduce.matrix.DenseMatrix;
-import mapreduce.operators.MatrixMultiplication;
-import mapreduce.operators.matrixmultiplication.DenseMatrixMultiplication;
+import matrixmultiplication.Matrix;
+import matrixmultiplication.matrix.DenseMatrix;
+import matrixmultiplication.operators.MatrixMultiplication;
+import matrixmultiplication.operators.densematrixmultiplication.DenseMatrixMultiplication;
 
 public class Checker {
 

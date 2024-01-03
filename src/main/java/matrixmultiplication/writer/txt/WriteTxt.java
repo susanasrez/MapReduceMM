@@ -1,13 +1,15 @@
-package mapreduce.writer;
+package matrixmultiplication.writer.txt;
 
-import mapreduce.Matrix;
+import matrixmultiplication.Matrix;
+import matrixmultiplication.writer.Writer;
 
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Writer {
+public class WriteTxt implements Writer {
 
-    public static void writeMatrixToTxt(Matrix matrix, String filePath) {
+    @Override
+    public void writeMatrix(Matrix matrix, String filePath) {
         try (FileWriter writer = new FileWriter(filePath)) {
             int size = matrix.size();
             for (int i = 0; i < size; i++) {

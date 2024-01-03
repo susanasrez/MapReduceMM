@@ -1,4 +1,4 @@
-package mapreduce.operators.hadoop;
+package matrixmultiplication.operators.hadoop;
 
 import org.apache.hadoop.io.WritableComparable;
 

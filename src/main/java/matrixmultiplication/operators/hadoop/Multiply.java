@@ -1,4 +1,4 @@
-package mapreduce.operators.hadoop;
+package matrixmultiplication.operators.hadoop;
 
 import java.io.IOException;
 import java.util.ArrayList;

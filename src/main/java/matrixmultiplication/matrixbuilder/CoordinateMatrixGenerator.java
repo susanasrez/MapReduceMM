@@ -1,13 +1,11 @@
-package mapreduce.matrixbuilders;
+package matrixmultiplication.matrixbuilder;
 
-import mapreduce.Matrix;
-import mapreduce.MatrixBuilder;
-import mapreduce.matrix.Coordinate;
-import mapreduce.matrix.CoordinateMatrix;
+import matrixmultiplication.Matrix;
+import matrixmultiplication.MatrixBuilder;
+import matrixmultiplication.matrix.Coordinate;
+import matrixmultiplication.matrix.CoordinateMatrix;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class CoordinateMatrixGenerator implements MatrixBuilder {
 
@@ -19,30 +17,20 @@ public class CoordinateMatrixGenerator implements MatrixBuilder {
         List<Coordinate> coordinates = new ArrayList<>();
         Random random = new Random();
         int totalNonZeroElements = (int) Math.round(n * n * density);
+        Set<Integer> usedCoordinates = new HashSet<>();
 
-        for (int i = 0; i < totalNonZeroElements; i++) {
-            int row = 0, col = 0;
-            boolean isUnique = false;
-            while (!isUnique) {
+        while (coordinates.size() < totalNonZeroElements) {
+            int row, col;
+            do {
                 row = random.nextInt(n);
                 col = random.nextInt(n);
-                isUnique = !containsCoordinate(coordinates, row, col);
-            }
+            } while (!usedCoordinates.add(row * n + col));
 
             int value = random.nextInt(101);
             coordinates.add(new Coordinate(row, col, value));
         }
 
         return new CoordinateMatrix(n, coordinates);
-    }
-
-    private static boolean containsCoordinate(List<Coordinate> coordinates, int row, int col) {
-        for (Coordinate coordinate : coordinates) {
-            if (coordinate.i() == row && coordinate.j() == col) {
-                return true;
-            }
-        }
-        return false;
     }
 
     @Override

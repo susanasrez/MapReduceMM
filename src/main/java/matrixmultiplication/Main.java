@@ -1,8 +1,9 @@
-package mapreduce;
+package matrixmultiplication;
 
-import mapreduce.matrixbuilders.CoordinateMatrixGenerator;
-import mapreduce.matrixbuilders.DenseMatrixBuilder;
-import mapreduce.writer.Writer;
+import matrixmultiplication.matrixbuilder.CoordinateMatrixGenerator;
+import matrixmultiplication.matrixbuilder.DenseMatrixBuilder;
+import matrixmultiplication.writer.txt.WriteTxt;
+import matrixmultiplication.writer.Writer;
 
 
 public class Main {
@@ -14,9 +15,10 @@ public class Main {
         Matrix matrix = builder.get();
         matrix.display();
 
+        Writer writer = new WriteTxt();
         String filePath = "./src/main/resources/matrixA.txt";
-        Writer.writeMatrixToTxt(matrix, filePath);
+        writer.writeMatrix(matrix, filePath);
         String filePath2 = "./src/main/resources/matrixB.txt";
-        Writer.writeMatrixToTxt(matrix, filePath2);
+        writer.writeMatrix(matrix, filePath2);
     }
 }

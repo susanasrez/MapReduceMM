@@ -1,9 +1,9 @@
-package mapreduce.matrixbuilders;
+package matrixmultiplication.matrixbuilder;
 
-import mapreduce.Matrix;
-import mapreduce.MatrixBuilder;
-import mapreduce.matrix.CoordinateMatrix;
-import mapreduce.matrix.DenseMatrix;
+import matrixmultiplication.Matrix;
+import matrixmultiplication.MatrixBuilder;
+import matrixmultiplication.matrix.CoordinateMatrix;
+import matrixmultiplication.matrix.DenseMatrix;
 
 public class DenseMatrixBuilder implements MatrixBuilder {
     private final int size;

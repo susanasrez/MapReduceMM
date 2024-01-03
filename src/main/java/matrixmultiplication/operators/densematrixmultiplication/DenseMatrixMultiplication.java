@@ -1,8 +1,8 @@
-package mapreduce.operators.matrixmultiplication;
+package matrixmultiplication.operators.densematrixmultiplication;
 
-import mapreduce.Matrix;
-import mapreduce.matrix.DenseMatrix;
-import mapreduce.operators.MatrixMultiplication;
+import matrixmultiplication.Matrix;
+import matrixmultiplication.matrix.DenseMatrix;
+import matrixmultiplication.operators.MatrixMultiplication;
 
 public class DenseMatrixMultiplication implements MatrixMultiplication {
 

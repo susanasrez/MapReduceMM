@@ -1,6 +1,6 @@
-package mapreduce.operators;
+package matrixmultiplication.operators;
 
-import mapreduce.Matrix;
+import matrixmultiplication.Matrix;
 
 public interface MatrixMultiplication {
     Matrix multiply(Matrix matrix_a, Matrix matrix_b);

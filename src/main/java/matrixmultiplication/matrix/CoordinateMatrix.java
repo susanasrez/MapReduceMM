@@ -1,6 +1,6 @@
-package mapreduce.matrix;
+package matrixmultiplication.matrix;
 
-import mapreduce.Matrix;
+import matrixmultiplication.Matrix;
 import java.util.List;
 
 public class CoordinateMatrix implements Matrix{
