@@ -27,4 +27,19 @@ class DenseMatrix():
                 return DenseMatrix(values)
         except FileNotFoundError:
             raise Exception("File not found: " + filePath)
+    
+    @staticmethod
+    def read_result(filePath):
+        try:
+            with open(filePath, 'r') as file:
+                lines = file.readlines()
+                values = []
+                for line in lines:
+                    parts = line.strip().split()
+                    row = [int(x) for x in parts[0].strip("[]").split(",")]
+                    value = float(parts[1])
+                    values.append([row, value])
+                return DenseMatrix(values)
+        except FileNotFoundError:
+            raise Exception("File not found: " + filePath)
         

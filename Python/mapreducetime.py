@@ -9,25 +9,32 @@ import subprocess, time, gc
 #N = [8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096]  
 N = 8
 density = 0.7
+script_path = './operations/mapReduce/matrixmultiplicationDense.py'
+filePath = "./results/test.txt"
 
 def test_map_reduce():
     for n in N:
         matrix = CoordinateMatrixGenerator.generate_random_coordinate_matrix(n, density)
         transform = MatrixTransformations()
         matrixA = transform.transform(matrix)
-        filePath = "./results/test.txt"
+        
+        print("Writing to file...")
+        start = time.time()
         writer = MatrixWriter(matrixA, matrixA, filePath)
         writer.write_to_file_dense()
-        print("Done")
+        end = time.time()
+        elapsed_time = (end - start)
+        print("N = " + str(n) + " Writing Time = " + str(elapsed_time) + " seconds")
 
-        script_path = './operations/mapReduce/matrixmultiplicationDense.py'
+        
         start = time.time()
         subprocess.call(['python', script_path, '--size', str(N), filePath])
         end = time.time()
         elapsed_time = (end - start)
         print("N = " + str(n) + " Time = " + str(elapsed_time) + " seconds")
 
-        result = DenseMatrix.read_from_file(filePath)
+        result = DenseMatrix.read_result(filePath)
+        result.display()
         Checker.test_dense(matrixA, matrixA, result)
 
         print("----------------------------------------------------------------------------------")

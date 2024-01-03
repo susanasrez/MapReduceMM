@@ -1,15 +1,14 @@
 from matrixBuilders.coordinate_matrix_generator import CoordinateMatrixGenerator
-from operations.original.denseMultiplication import DenseMatrixMultiplication
 from matrixBuilders.transformations import MatrixTransformations
-import time
-from Checker.checker import Checker
-import gc
+from operations.original.denseMultiplication import DenseMatrixMultiplication
+from checker.checker import Checker
+import time, gc
 
-N = [8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096]
-density = 0.7
+densities = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+N = 512
 
-def test_sequential_time():
-    for n in N:
+def test_densities():
+    for density in densities:
         matrix = CoordinateMatrixGenerator.generate_random_coordinate_matrix(n, density)
         transform = MatrixTransformations()
         matrixA = transform.transform(matrix)
@@ -30,7 +29,4 @@ def test_sequential_time():
         gc.collect()
 
 if __name__ == "__main__":
-    test_sequential_time()
-
-    
-    
+    test_densities()
