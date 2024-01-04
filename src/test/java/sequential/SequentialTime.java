@@ -14,7 +14,7 @@ import java.util.List;
 public class SequentialTime {
 
     public static void main(String[] args) {
-        List<Integer> N = new ArrayList<>(List.of(8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096));
+        List<Integer> N = new ArrayList<>(List.of(8, 16, 32, 64, 128, 256, 512, 1024));
         MatrixMultiplication multiplier = new DenseMatrixMultiplication();
 
         for (Integer n: N) {

@@ -12,10 +12,9 @@ public class DenseMatrixMultiplication implements MatrixMultiplication {
         DenseMatrix b = (DenseMatrix) matrix_b;
         int[][] c = new int[a.size()][b.size()];
         for (int i = 0; i < a.size(); i++) {
-            for (int k = 0; k < b.size(); k++) {
-                int aik = a.get(i, k);
-                for (int j = 0; j < a.size();j++) {
-                    c[i][j] += aik * b.get(k, j);
+            for (int j = 0; j < a.size();j++) {
+                for (int k = 0; k < b.size(); k++) {
+                    c[i][j] += a.get(i, k) * b.get(k, j);
                 }
             }
         }

@@ -52,7 +52,7 @@ public class Checker {
             String[] parts = line.split("\\s+");
             int i = Integer.parseInt(parts[0]);
             int j = Integer.parseInt(parts[1]);
-            int value = Integer.parseInt(parts[2]);
+            int value = (int) Double.parseDouble(parts[2]);
 
             values[i][j] = value;
         }
