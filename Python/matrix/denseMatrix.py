@@ -29,17 +29,19 @@ class DenseMatrix():
             raise Exception("File not found: " + filePath)
     
     @staticmethod
-    def read_result(filePath):
+    def read_result(filePath,n):
         try:
             with open(filePath, 'r') as file:
                 lines = file.readlines()
-                values = []
+                matrix = [[0.0 for _ in range(n)] for _ in range(n)]
                 for line in lines:
-                    parts = line.strip().split()
-                    row = [int(x) for x in parts[0].strip("[]").split(",")]
+                    parts = line.strip().split("\t")
+                    coordinates = parts[0].strip("[]").split(",")
+                    row, col = int(coordinates[0]), int(coordinates[1]) 
                     value = float(parts[1])
-                    values.append([row, value])
-                return DenseMatrix(values)
+                    matrix[row][col] = value
+                return DenseMatrix(matrix)
         except FileNotFoundError:
             raise Exception("File not found: " + filePath)
+
         

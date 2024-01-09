@@ -5,7 +5,7 @@ import time
 from Checker.checker import Checker
 import gc
 
-N = [8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096]
+N = [8, 16, 32, 64, 128, 256, 512, 1024]
 density = 0.7
 
 def test_sequential_time():
@@ -18,8 +18,8 @@ def test_sequential_time():
         start = time.time()
         result = DenseMatrixMultiplication().multiply(matrixA, matrixA)
         end = time.time()
-        elapsed_time = (end - start) * 1000
-        print("N = " + str(n) + " Time = " + str(elapsed_time) + " milliseconds")
+        elapsed_time = (end - start)
+        print("N = " + str(n) + " Time = " + str(elapsed_time) + " seconds")
         Checker.test_dense(matrixA, matrixA, result)
         print("----------------------------------------------------------------------------------")
         
