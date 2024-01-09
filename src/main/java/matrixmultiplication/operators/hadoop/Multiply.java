@@ -162,6 +162,5 @@ public class Multiply {
         FileInputFormat.setInputPaths(job2, new Path(args[2]));
         FileOutputFormat.setOutputPath(job2, new Path(args[3]));
         job2.waitForCompletion(true);
-        //System.exit(job2.waitForCompletion(true) ? 0 : 1);
     }
 }
