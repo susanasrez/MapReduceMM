@@ -1,5 +1,7 @@
 # Matrix Multiplication Repository and Frequent-item-set Algorithm with MapReduce
 
+<img src="https://github.com/susanasrez/JavaSearchEngineProject/blob/master/logo.png" width="150" align="left" />
+
 This repository is designed to perform matrix multiplication and implementation of the Frequent-item-set algorithm using the MapReduce framework. The code is organised in three main branches:
 
 - **"Main"** branch: contains the Python code that performs matrix multiplication using the mrjob library.
