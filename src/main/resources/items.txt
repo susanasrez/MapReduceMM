@@ -1,0 +1,4 @@
+apple banana orange strawberry
+banana orange pineapple
+lemon cherries
+banana orange strawberry lemon
